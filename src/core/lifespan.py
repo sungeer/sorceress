@@ -1,29 +1,20 @@
-from contextlib import asynccontextmanager
+from fastmcp.server.lifespan import lifespan
 
-from src.core.logger import setup_logger
 from src.core.db_registry import db
 from src.core.executor import executor
-from src.core.startup_state import startup_state
-from src.core.llm_registry import llm_registry
+from src.core.logger import setup_logger
 
 
-@asynccontextmanager
-async def lifespan(app):
+@lifespan
+async def server_lifespan(server):
     setup_logger()
 
     db.init()
-    startup_state.db_pool_ready = True
-
-    llm_registry.init()
 
     executor.init()
-
-    startup_state.app_started = True
 
     yield
 
     executor.shutdown()
-
-    await llm_registry.close()
 
     db.dispose()

@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
 
 from src.config import settings
-from src.lifespan import server_lifespan
+from src.core.lifespan import server_lifespan
 from src.middleware import middleware
 from src.tools import register_all
 
