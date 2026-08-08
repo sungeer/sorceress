@@ -6,7 +6,7 @@ pip install -r requirements.txt
 
 # 卸载 `pip uninstall asyncmy`
 
-取出版本管理：`git rm --cached CLAUDE.md .claudeignore`
+去除该文件的版本管理：`git rm --cached CLAUDE.md .claudeignore`
 
 
 
