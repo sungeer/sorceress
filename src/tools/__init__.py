@@ -1,5 +1,6 @@
-from src.tools import echo
+from src.tools import echo, query
 
 
 def register_all(mcp):
-    mcp.tool(echo.echo, name='echo', description='原样返回输入文本，用于验证 MCP 链路是否打通')
+    mcp.tool(echo.echo, name='echo', description=echo.description)
+    mcp.tool(query.query, name='query', description=query.description)

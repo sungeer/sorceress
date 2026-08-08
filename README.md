@@ -1,13 +1,13 @@
 # poetess
 
-*An agent built with LangGraph.*
+*An agent built with FastMCP.*
 
 ## Installation
 
 clone:
 ```
-$ git clone git@github.com:sungeer/poetess.git
-$ cd poetess
+$ git clone git@github.com:sungeer/sorceress.git
+$ cd sorceress
 ```
 create & activate virtual env then install dependency:
 
@@ -19,8 +19,8 @@ $ pip install -r requirements.txt
 ```
 then run:
 ```
-$ uvicorn poetess:app --port 8848
-* Running on http://127.0.0.1:8848/
+$ uvicorn server:app --port 7788
+* Running on http://127.0.0.1:7788/mcp
 ```
 
 ## License
