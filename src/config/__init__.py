@@ -1,0 +1,15 @@
+import os
+
+from src.config.development import DevelopmentConfig
+
+config_map = {
+    'development': DevelopmentConfig,
+    # 'testing': TestingConfig,
+    # 'production': ProductionConfig
+}
+
+config_name = os.getenv('CONFIG_NAME', default='production')
+
+settings = config_map.get(config_name)
+if settings is None:
+    raise ValueError(f'无效的 CONFIG_NAME: {config_name}')
