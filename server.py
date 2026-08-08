@@ -1,3 +1,3 @@
-from src.main import create_mcp
+from src.main import create_app
 
-app = create_mcp().http_app(transport='streamable-http')
+app = create_app()
