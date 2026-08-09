@@ -3,7 +3,7 @@ import asyncio
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 
-SERVER_URL = 'http://127.0.0.1:7788/mcp'
+SERVER_URL = 'http://127.0.0.1:8848/mcp'
 
 
 async def call_echo(text: str):
