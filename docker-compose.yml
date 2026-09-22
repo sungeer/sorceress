@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: sorceress-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      # MySQL refuses to create a user named 'root' again, so only set
+      # MYSQL_PASSWORD when DB_USER isn't root (see notes below).
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      # host_port:container_port — change the left side in .env (DB_PORT)
+      # if 3306 is already taken locally, without touching the container.
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - sorceress-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  sorceress-mysql-data:
