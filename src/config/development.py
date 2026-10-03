@@ -11,4 +11,4 @@ class DevelopmentConfig(BaseConfig):
     db_port = 3306
     db_user = 'root'
     db_passwd = 'admin'
-    db_name = 'viper'
+    db_name = 'waitress'

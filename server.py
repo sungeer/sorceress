@@ -1,3 +1,3 @@
-from src.main import create_app
+from src.main import create_mcp
 
-app = create_app()
+mcp = create_mcp()

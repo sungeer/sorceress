@@ -1,16 +1,16 @@
-from starlette.middleware.base import BaseHTTPMiddleware
+import uuid
 
-from src.core.context import new_run_id, run_id_var
+from fastmcp.server.middleware import Middleware, MiddlewareContext
+
+from src.core.context import run_id_var
 
 
-class RunIdMiddleware(BaseHTTPMiddleware):
+class RunIdMiddleware(Middleware):
+    async def on_call_tool(self, context: MiddlewareContext, call_next):
+        run_id = str(uuid.uuid4())
 
-    async def dispatch(self, request, call_next):
-        # 优先复用上游传入的 X-Request-ID
-        run_id = request.headers.get('X-Request-ID', new_run_id())
-        run_id_var.set(run_id)  # 供代码层直接取用
-
-        response = await call_next(request)
-
-        response.headers['X-Request-ID'] = run_id
-        return response
+        token = run_id_var.set(run_id)
+        try:
+            return await call_next(context)
+        finally:
+            run_id_var.reset(token)
