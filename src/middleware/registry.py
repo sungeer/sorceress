@@ -1,5 +1,5 @@
-from src.middleware.tracing import RunIdMiddleware
+from src.middleware.tracing import CallLogMiddleware
 
 middleware = [
-    RunIdMiddleware(),
+    CallLogMiddleware(),
 ]
