@@ -8,7 +8,7 @@ pip install -r requirements.txt
 
 python -m pip install fastmcp
 
-python -m pip install DBUtils PyMySQL python-dotenv cryptography
+python -m pip install httpx2 python-dotenv
 
 
 # 指定 HTTP 传输方式
