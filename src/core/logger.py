@@ -16,6 +16,11 @@ def setup_logger():
 
     root_logger.setLevel(logging.INFO)
 
+    # fastmcp log
+    fastmcp_logger = logging.getLogger('fastmcp')
+    fastmcp_logger.handlers.clear()
+    fastmcp_logger.propagate = True
+
     fmt = '%(asctime)s | %(levelname)s | %(message)s (%(name)s:%(lineno)d)'
 
     formatter = logging.Formatter(fmt=fmt)
