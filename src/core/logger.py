@@ -16,12 +16,9 @@ def setup_logger():
 
     root_logger.setLevel(logging.INFO)
 
-    # logging.getLogger('fastmcp').setLevel(logging.WARNING)
-
     fmt = '%(asctime)s | %(levelname)s | %(message)s (%(name)s:%(lineno)d)'
-    datefmt = '%H:%M:%S'
 
-    formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
+    formatter = logging.Formatter(fmt=fmt)
 
     if settings.ENVIRONMENT == 'development':
         console_handler = logging.StreamHandler(sys.stdout)
