@@ -1,0 +1,8 @@
+﻿fastmcp
+loguru
+python-dotenv
+uvicorn
+gunicorn
+DBUtils
+PyMySQL
+cryptography
